@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Contoh 1: useEffect yang jalan setiap kali komponen render
 // (tanpa array dependency)
 function EveryRenderDemo() {
   const [count, setCount] = useState(0);
 
+  useEffect(() => {
+    console.log("Execute every render");
+  });
   return (
     <div className="rounded-lg border border-gray-200 p-6">
       <h3 className="mb-1 font-semibold text-gray-900">
@@ -30,7 +33,12 @@ function EveryRenderDemo() {
 function DependencyDemo() {
   const [count, setCount] = useState(0);
   const [text, setText] = useState("");
-
+  useEffect(() => {
+    console.log("Execute only on mount (only once)");
+  }, []);
+  useEffect(() => {
+    console.log("Execute only when text changed:" + text);
+  }, [text]);
   return (
     <div className="rounded-lg border border-gray-200 p-6">
       <h3 className="mb-1 font-semibold text-gray-900">
