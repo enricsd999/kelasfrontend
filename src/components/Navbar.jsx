@@ -25,6 +25,9 @@ function Navbar() {
           <a href="/useeffect" className="text-gray-600 hover:text-blue-600">
             useEffect
           </a>
+          <a href="/fetchapi" className="text-gray-600 hover:text-blue-600">
+            Fetch API
+          </a>
         </div>
       </div>
     </nav>

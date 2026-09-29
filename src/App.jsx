@@ -5,6 +5,7 @@ import Features from "./pages/Features";
 import Contact from "./pages/Contact";
 import UseRef from "./pages/UseRef";
 import UseEffect from "./pages/UseEffect";
+import FetchApi from "./pages/FetchApi";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/useref" element={<UseRef />} />
           <Route path="/useeffect" element={<UseEffect />} />
+          <Route path="/fetchapi" element={<FetchApi />} />
         </Routes>
       </BrowserRouter>
     </div>
