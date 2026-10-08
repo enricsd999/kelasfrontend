@@ -4,24 +4,32 @@ export default function FetchApi() {
   // 1. Siapkan state untuk menyimpan data dari API (awalnya array kosong)
   const [users, setUsers] = useState([]);
   const [posts, setPosts] = useState([]);
+  const [weather, setWeather] = useState({});
 
   // 2. Ambil data dari API satu kali saat halaman pertama kali dibuka
   useEffect(() => {
-    async function getUsers() {
-      const url = "https://jsonplaceholder.typicode.com/users";
-      const response = await fetch(url);
-      const data = await response.json();
-      setUsers(data);
+    async function getData() {
+      const usersURL = "https://jsonplaceholder.typicode.com/users";
+      const postsURL = "https://jsonplaceholder.typicode.com/posts";
+      const weatherURL =
+        "https://api.open-meteo.com/v1/forecast?latitude=1.4225&longitude=124.9772&current=temperature_2m,relative_humidity_2m&timezone=Asia%2FSingapore";
+
+      const [usersRes, postsRes, weatherRes] = await Promise.all([
+        fetch(usersURL),
+        fetch(postsURL),
+        fetch(weatherURL),
+      ]);
+
+      const usersData = await usersRes.json();
+      const postsData = await postsRes.json();
+      const weatherData = await weatherRes.json();
+
+      setUsers(usersData);
+      setPosts(postsData);
+      setWeather(weatherData);
     }
-    async function getPosts() {
-      const url = "https://jsonplaceholder.typicode.com/posts";
-      const response = await fetch(url);
-      const data = await response.json();
-      setPosts(data);
-    }
-    getUsers();
-    getPosts();
-  },[]);
+    getData();
+  }, []);
 
   // 3. Tampilkan data dengan .map() untuk setiap user
   return (
@@ -34,6 +42,13 @@ export default function FetchApi() {
       </p>
 
       <div className="grid gap-4 sm:grid-cols-2">
+        <div
+            className="rounded-lg border border-gray-200 bg-white p-4"
+          >
+            <h2 className="font-semibold text-gray-900">Airmadidi Bawah</h2>
+            <p className="text-sm text-gray-600">{weather.current?.temperature_2m}°C</p>
+            <p className="text-sm text-gray-600">{weather.current?.relative_humidity_2m}%</p>
+          </div>
         {users.map((user) => (
           <div
             key={user.id}
