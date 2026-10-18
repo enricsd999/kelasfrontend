@@ -1,0 +1,37 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "Hello json-server",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "React + REST API",
+      "views": 200
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "Great post!",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "users": [
+    {
+      "id": "1",
+      "name": "Enrico Djimesha",
+      "email": "enrico.djimesha@unklab.ac.id"
+    },
+    {
+      "id": "2",
+      "name": "Ervin Howell",
+      "email": "Shanna@melissa.tv"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
