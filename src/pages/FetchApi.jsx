@@ -127,6 +127,9 @@ export default function FetchApi() {
           >
             <h2 className="font-semibold text-gray-900">{user.name}</h2>
             <p className="text-sm text-gray-600">{user.email}</p>
+            <button className="mt-3 rounded-lg bg-red-600 px-3 py-1 text-sm text-white hover:bg-red-700">
+              Delete
+            </button>
           </div>
         ))}
       </div>
