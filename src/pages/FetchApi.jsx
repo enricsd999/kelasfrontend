@@ -16,18 +16,18 @@ export default function FetchApi() {
       const weatherURL =
         "https://api.open-meteo.com/v1/forecast?latitude=1.4225&longitude=124.9772&current=temperature_2m,relative_humidity_2m&timezone=Asia%2FSingapore";
 
-      const [gempaRes, usersRes,  weatherRes] = await Promise.all([
+      const [gempaRes, usersRes, weatherRes] = await Promise.all([
         fetch(gempaURL),
         fetch(usersURL),
         fetch(weatherURL),
       ]);
 
       console.log(gempaRes);
-      
+
       // const usersData = await usersRes.json();
       const gempaData = await gempaRes.json();
       console.log(gempaData);
-      
+
       const usersData = await usersRes.json();
       const weatherData = await weatherRes.json();
 
@@ -38,7 +38,14 @@ export default function FetchApi() {
     getData();
   }, []);
 
-  
+  async function postData(e) {
+    e.preventDefault();
+    await fetch("http://localhost:3001/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email }),
+    });
+  }
 
   // 3. Tampilkan data dengan .map() untuk setiap user
   return (
@@ -51,6 +58,7 @@ export default function FetchApi() {
       </p>
 
       <form
+        onSubmit={postData}
         className="mb-4 flex flex-col gap-2 sm:flex-row"
       >
         <input
@@ -89,9 +97,7 @@ export default function FetchApi() {
           <p className="text-sm text-gray-600">
             {gempa.Infogempa?.gempa?.Tanggal}
           </p>
-          <p className="text-sm text-gray-600">
-            {gempa.Infogempa?.gempa?.Jam}
-          </p>
+          <p className="text-sm text-gray-600">{gempa.Infogempa?.gempa?.Jam}</p>
           <p className="text-sm text-gray-600">
             {gempa.Infogempa?.gempa?.Wilayah}
           </p>
@@ -101,8 +107,11 @@ export default function FetchApi() {
           <p className="text-sm text-gray-600">
             {gempa.Infogempa?.gempa?.Kedalaman}
           </p>
-          <img src={`https://static.bmkg.go.id/${gempa.Infogempa?.gempa?.Shakemap}`}/>
-        </div><div className="rounded-lg border border-gray-200 bg-white p-4">
+          <img
+            src={`https://static.bmkg.go.id/${gempa.Infogempa?.gempa?.Shakemap}`}
+          />
+        </div>
+        <div className="rounded-lg border border-gray-200 bg-white p-4">
           <h2 className="font-semibold text-gray-900">Airmadidi Bawah</h2>
           <p className="text-sm text-gray-600">
             {weather.current?.temperature_2m}°C
