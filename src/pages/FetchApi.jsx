@@ -47,6 +47,12 @@ export default function FetchApi() {
     });
   }
 
+  async function deleteData(id) {
+    await fetch(`http://localhost:3001/users/${id}`, {
+      method: "DELETE",
+    });
+  }
+
   // 3. Tampilkan data dengan .map() untuk setiap user
   return (
     <div className="max-w-4xl mx-auto px-6 py-24">
@@ -127,7 +133,7 @@ export default function FetchApi() {
           >
             <h2 className="font-semibold text-gray-900">{user.name}</h2>
             <p className="text-sm text-gray-600">{user.email}</p>
-            <button className="mt-3 rounded-lg bg-red-600 px-3 py-1 text-sm text-white hover:bg-red-700">
+            <button onClick={()=>deleteData(user.id)} className="mt-3 rounded-lg bg-red-600 px-3 py-1 text-sm text-white hover:bg-red-700">
               Delete
             </button>
           </div>
