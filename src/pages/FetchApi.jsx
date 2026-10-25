@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import EditUserModal from "../components/EditUserModal";
 
 export default function FetchApi() {
   // 1. Siapkan state untuk menyimpan data dari API (awalnya array kosong)
@@ -7,6 +8,9 @@ export default function FetchApi() {
   const [gempa, setGempa] = useState({});
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  // State untuk modal edit: apakah modal terbuka, dan user mana yang diedit
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   // 2. Ambil data dari API satu kali saat halaman pertama kali dibuka
   useEffect(() => {
@@ -133,12 +137,33 @@ export default function FetchApi() {
           >
             <h2 className="font-semibold text-gray-900">{user.name}</h2>
             <p className="text-sm text-gray-600">{user.email}</p>
-            <button onClick={()=>deleteData(user.id)} className="mt-3 rounded-lg bg-red-600 px-3 py-1 text-sm text-white hover:bg-red-700">
-              Delete
-            </button>
+            <div className="mt-3 flex gap-2">
+              <button
+                onClick={() => {
+                  setSelectedUser(user);
+                  setIsModalOpen(true);
+                }}
+                className="rounded-lg bg-blue-600 px-3 py-1 text-sm text-white hover:bg-blue-700"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => deleteData(user.id)}
+                className="rounded-lg bg-red-600 px-3 py-1 text-sm text-white hover:bg-red-700"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         ))}
       </div>
+
+      {isModalOpen && (
+        <EditUserModal
+          user={selectedUser}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </div>
   );
 }

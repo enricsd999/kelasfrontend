@@ -23,14 +23,14 @@
   },
   "users": [
     {
-      "id": "1",
-      "name": "Enrico Djimesha",
-      "email": "enrico.djimesha@unklab.ac.id"
-    },
-    {
       "id": "2",
       "name": "Ervin Howell",
       "email": "Shanna@melissa.tv"
+    },
+    {
+      "name": "Enrico Djimesha",
+      "email": "enrico.djimesha@unklab.ac.id",
+      "id": "wOY39SqT5Ys"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
