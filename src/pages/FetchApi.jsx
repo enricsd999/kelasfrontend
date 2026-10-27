@@ -60,10 +60,10 @@ export default function FetchApi() {
   // 3. Tampilkan data dengan .map() untuk setiap user
   return (
     <div className="max-w-4xl mx-auto px-6 py-24">
-      <h1 className="text-4xl font-bold text-gray-900 mb-2 text-center">
-        Daftar <span className="text-blue-600">User</span>
+      <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2 text-center">
+        Daftar <span className="text-blue-600 dark:text-blue-400">User</span>
       </h1>
-      <p className="text-gray-600 text-sm mb-10 text-center">
+      <p className="text-gray-600 dark:text-gray-400 text-sm mb-10 text-center">
         Data diambil dari jsonplaceholder.typicode.com/users
       </p>
 
@@ -76,14 +76,14 @@ export default function FetchApi() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Ketik name user..."
-          className="flex-1 rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+          className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
         />
         <input
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Ketik email user..."
-          className="flex-1 rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+          className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
         />
         <button
           type="submit"
@@ -94,49 +94,49 @@ export default function FetchApi() {
       </form>
 
       {/* {user && (
-        <div className="rounded-lg border border-gray-200 bg-white p-4">
-          <h2 className="font-semibold text-gray-900">Pengguna</h2>
-          <p className="text-sm text-gray-600">{user.name}</p>
-          <p className="text-sm text-gray-600">{user.email}</p>
+        <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
+          <h2 className="font-semibold text-gray-900 dark:text-white">Pengguna</h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400">{user.name}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">{user.email}</p>
         </div>
       )} */}
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <div className="rounded-lg border border-gray-200 bg-white p-4">
-          <h2 className="font-semibold text-gray-900">Gempa Terkini</h2>
-          <p className="text-sm text-gray-600">
+        <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
+          <h2 className="font-semibold text-gray-900 dark:text-white">Gempa Terkini</h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             {gempa.Infogempa?.gempa?.Tanggal}
           </p>
-          <p className="text-sm text-gray-600">{gempa.Infogempa?.gempa?.Jam}</p>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-600 dark:text-gray-400">{gempa.Infogempa?.gempa?.Jam}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             {gempa.Infogempa?.gempa?.Wilayah}
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             {gempa.Infogempa?.gempa?.Magnitude}
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             {gempa.Infogempa?.gempa?.Kedalaman}
           </p>
           <img
             src={`https://static.bmkg.go.id/${gempa.Infogempa?.gempa?.Shakemap}`}
           />
         </div>
-        <div className="rounded-lg border border-gray-200 bg-white p-4">
-          <h2 className="font-semibold text-gray-900">Airmadidi Bawah</h2>
-          <p className="text-sm text-gray-600">
+        <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
+          <h2 className="font-semibold text-gray-900 dark:text-white">Airmadidi Bawah</h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             {weather.current?.temperature_2m}°C
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             {weather.current?.relative_humidity_2m}%
           </p>
         </div>
         {users.map((user) => (
           <div
             key={user.id}
-            className="rounded-lg border border-gray-200 bg-white p-4"
+            className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4"
           >
-            <h2 className="font-semibold text-gray-900">{user.name}</h2>
-            <p className="text-sm text-gray-600">{user.email}</p>
+            <h2 className="font-semibold text-gray-900 dark:text-white">{user.name}</h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">{user.email}</p>
             <div className="mt-3 flex gap-2">
               <button
                 onClick={() => {

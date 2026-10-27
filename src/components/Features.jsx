@@ -19,12 +19,12 @@ const features = [
 
 function Features() {
   return (
-    <section id="features" className="bg-white py-20">
+    <section id="features" className="bg-white dark:bg-gray-900 py-20">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900">Features</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Features</h2>
 
-          <p className="mt-3 text-gray-600">
+          <p className="mt-3 text-gray-600 dark:text-gray-400">
             Everything is built using React and Tailwind CSS.
           </p>
         </div>

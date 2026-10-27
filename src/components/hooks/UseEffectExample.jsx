@@ -9,14 +9,14 @@ function EveryRenderDemo() {
     console.log("Execute every render");
   });
   return (
-    <div className="rounded-lg border border-gray-200 p-6">
-      <h3 className="mb-1 font-semibold text-gray-900">
+    <div className="rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+      <h3 className="mb-1 font-semibold text-gray-900 dark:text-white">
         1. Tanpa dependency array
       </h3>
-      <p className="mb-4 text-sm text-gray-600">
+      <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
         Efek ini jalan setiap kali komponen render (cek console tiap klik).
       </p>
-      <p className="mb-4 text-3xl font-bold text-blue-600">{count}</p>
+      <p className="mb-4 text-3xl font-bold text-blue-600 dark:text-blue-400">{count}</p>
       <button
         onClick={() => setCount(count + 1)}
         className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
@@ -40,11 +40,11 @@ function DependencyDemo() {
     console.log("Execute only when text changed:" + text);
   }, [text]);
   return (
-    <div className="rounded-lg border border-gray-200 p-6">
-      <h3 className="mb-1 font-semibold text-gray-900">
+    <div className="rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+      <h3 className="mb-1 font-semibold text-gray-900 dark:text-white">
         2. Dengan dependency array
       </h3>
-      <p className="mb-4 text-sm text-gray-600">
+      <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
         Buka console: ketik di input (tidak memicu efek), lalu klik tombol
         (memicu efek karena count berubah).
       </p>
@@ -55,7 +55,7 @@ function DependencyDemo() {
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Ketik di sini (tidak memicu efek)"
-          className="flex-1 rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+          className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
         />
         <button
           onClick={() => setCount(count + 1)}

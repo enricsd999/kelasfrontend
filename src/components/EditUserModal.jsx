@@ -5,32 +5,38 @@ export default function EditUserModal({ user, onClose }) {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
 
-  
+  async function saveData() {
+    await fetch(`http://localhost:3001/users/${user.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email }),
+    });
+  }
 
   // 3. Tampilkan modal berisi form edit
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
       {/* Modal */}
-      <div className="relative mx-4 w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+      <div className="relative mx-4 w-full max-w-md rounded-xl bg-white dark:bg-gray-900 p-6 shadow-xl">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 text-2xl text-gray-400 hover:text-gray-700"
+          className="absolute right-4 top-4 text-2xl text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
         >
           &times;
         </button>
 
         {/* Header */}
         <div className="mb-6 text-center">
-          <h2 className="text-2xl font-bold text-gray-800">Edit User</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Edit User</h2>
         </div>
 
         {/* Form */}
-        <form  className="space-y-4">
+        <form onSubmit={() => saveData()} className="space-y-4">
           <div>
             <label
               htmlFor="edit-name"
-              className="mb-1 block text-sm font-medium text-gray-700"
+              className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
             >
               Name
             </label>
@@ -39,14 +45,14 @@ export default function EditUserModal({ user, onClose }) {
               id="edit-name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-4 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
             />
           </div>
 
           <div>
             <label
               htmlFor="edit-email"
-              className="mb-1 block text-sm font-medium text-gray-700"
+              className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
             >
               Email
             </label>
@@ -55,7 +61,7 @@ export default function EditUserModal({ user, onClose }) {
               id="edit-email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-4 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
             />
           </div>
 
@@ -63,7 +69,7 @@ export default function EditUserModal({ user, onClose }) {
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 rounded-lg border border-gray-300 px-4 py-2 font-medium text-gray-700 hover:bg-gray-100"
+              className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 px-4 py-2 font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               Batal
             </button>
